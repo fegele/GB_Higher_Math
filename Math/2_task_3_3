@@ -1,0 +1,27 @@
+# Напишите код, который будет рисовать график отрезка прямой линии в полярных координатах.
+
+%matplotlib inline
+import matplotlib.pyplot as plt
+import numpy as np
+
+# 1. график отрезка по координатам начальной и конечной точки
+
+# координаты первой точки
+r_1 = 5
+phi_1 = np.pi/9
+# координаты второй точки
+r_2 = 7
+phi_2 = np.pi*1.25
+plt.polar([phi_1, phi_2], [r_1, r_2], color='blue')
+
+
+# 2. график прямой по уравнению прямой в полярных координатах
+
+# расстояние от полюса до прямой
+p = 13
+# угол между полярной осью и осью, перпендикулярной к прямой
+alpha = np.pi/3
+phi = [0, alpha*2]
+r = [p / np.cos(phi_ - alpha) for phi_ in phi]
+plt.polar(phi, r, color='m')
+plt.polar([0, alpha], [0, p], color='black', linestyle='dashed')
