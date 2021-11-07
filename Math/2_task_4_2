@@ -1,0 +1,46 @@
+# решить систему неравенств
+# y = x**2 – 1
+# exp(x) + x*(1 – y) > 1
+
+x = np.linspace(-3, 3, 201)
+y1 = x**2 - 1
+y2 = (np.exp(x) + x - 1) / x
+plt.plot(x, y1, color='c', zorder=0)
+plt.plot(x, y2, linestyle="dashed", color = 'b', zorder=1)
+plt.fill_between(x, y2, 10, color = 'b', alpha=.1)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.grid(True)
+plt.show
+
+def root(x_start, interval, accuracy, color):
+    '''
+    x_start: начальное приближение
+    interval: интервал для поиска по обе стороны от начальной точки
+    accuracy: точность вычисления корня
+    '''
+    plt.plot([x_start, x_start], [-2, 10], color=color, linestyle='dotted', zorder=2)
+    plt.text(x_start + 0.05, -2, 'start')
+    # вспомогательная переменная для поиска слева от начальной точки
+    x_ = x_start
+
+    for x in np.arange(x_start, interval, accuracy):
+        y = x**2 - 1
+        if y > (np.exp(x) + x - 1) / x:
+            if x == x_start:
+                print('Root:', x, y)
+            else:
+                print('Root found to the right from the start point:', x, y)
+            break
+        y = x_**2 - 1
+        if y > (np.exp(x_) + x_ - 1) / x_:
+            x = x_
+            print('Root found to the left from the start point:', x, y)
+            break
+        x_ -= accuracy
+    plt.scatter(x, y, color=color, zorder=3)
+    plt.text(x, y + 0.5, 'root')
+
+
+root(-1, 10, 0.01, 'r')
+root(1, 10, 0.1, 'm')

@@ -1,0 +1,41 @@
+# 4.2 Решить систему уравнений и неравенств
+# y = x**2 – 1
+# exp(x) + x*(1 – y) > 1
+
+x = np.linspace(-3, 5, 201)
+y1 = x**2 - 1
+y2 = (np.exp(x) + x - 1) / x
+plt.plot(x, y1, color='c', zorder=0)
+plt.plot(x, y2, linestyle="dashed", color = 'b', zorder=1)
+plt.fill_between(x, y2, 30, where = np.exp(x) + x*(1 - y) - 1 < 0, color = 'b', alpha=.1)
+plt.fill_between(x, y2, -2, where = np.exp(x) + x*(1 - y) - 1 > 0, color = 'b', alpha=.1)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.grid(True)
+plt.show
+
+def root(x_start, area, accuracy, color):
+    '''
+    x_start: начальное приближение
+    area: область поиска по обе стороны от начальной точки
+    accuracy: точность вычисления
+    '''
+    plt.plot([x_start, x_start], [-2, 30], color=color, linestyle='dotted', zorder=2)
+    x_ = x_start
+    for x in np.arange(x_start, area, accuracy):
+        y = x**2 - 1
+        if np.exp(x) + x*(1 - y) - 1 > 0:
+            break
+        y = x_**2 - 1
+        if np.exp(x_) + x_*(1 - y) - 1 > 0:
+            x = x_
+            break
+        x_ -= accuracy
+    print(x, y)
+    plt.scatter(x, y, color=color, zorder=3)
+
+
+root(-1, 10, 0.01, 'r')
+root(-0.5, 10, 0.1, 'black')
+root(3, 10, 0.1, 'green')
+root(4, 10, 0.1, 'm')

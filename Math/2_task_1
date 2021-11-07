@@ -1,0 +1,27 @@
+# Нарисуйте график функции y = k * cos(x - a) + b  для некоторых (2-3 различных) значений параметров k, a, b
+
+%matplotlib inline
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-3 * np.pi, 3 * np.pi, 201)
+k = 1
+a = 0
+b = 0
+plt.plot(x, k * (np.cos(x - a) + b), color = 'black')
+k = 2.5
+a = 1
+b = 3
+plt.plot(x, k * (np.cos(x - a) + b), color = 'orange')
+k = 0.5
+a = 1
+b = 0
+plt.plot(x, k * (np.cos(x - a) + b), color = 'green')
+k = 1
+a = 0
+b = 4
+plt.plot(x, k * (np.cos(x - a) + b), color = 'cyan')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.grid(True)
+plt.show

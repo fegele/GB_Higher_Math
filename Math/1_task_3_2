@@ -1,0 +1,27 @@
+# график эллипса
+
+%matplotlib inline
+import matplotlib.pyplot as plt
+import math
+
+x = []
+y_1 = []
+y_2 = []
+# полуоси эллипса
+a = 7
+b = 3
+# координаты центра эллипса
+x_0 = 0
+y_0 = 0
+
+for i in range(-max(a, b) * 100, max(a, b) * 100 + 1):
+    x_ = i / 100
+    x.append(x_ + x_0)
+    y_1.append(math.sqrt((1 - x_**2 / a**2) * b**2) + y_0)
+    y_2.append(-math.sqrt((1 - x_**2 / a**2) * b**2) + y_0)
+
+plt.plot(x, y_1, color = 'm')
+plt.plot(x, y_2, color = 'm')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.axis('equal')

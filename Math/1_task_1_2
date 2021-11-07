@@ -1,0 +1,7 @@
+# расчёт длины вектора
+
+import math
+
+vec = [int(i) for i in input('Enter vector coordinates separated by space: ').split()]
+vec_length = math.sqrt(sum([i**2 for i in vec]))
+print(f'Vector length = {vec_length}')

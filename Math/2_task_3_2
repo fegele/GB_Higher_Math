@@ -1,0 +1,9 @@
+# Напишите код, который будет рисовать график окружности в полярных координатах.
+
+%matplotlib inline
+import matplotlib.pyplot as plt
+import numpy as np
+
+R = 8
+A = np.arange(0, 2*np.pi, 0.1)
+plt.polar(A, [R for i in A], color='cyan')

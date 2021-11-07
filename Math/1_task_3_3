@@ -1,0 +1,39 @@
+# график гиперболы
+
+%matplotlib inline
+import matplotlib.pyplot as plt
+import math
+
+x_1 = []
+x_2 = []
+y_11 = []
+y_12 = []
+y_21 = []
+y_22 = []
+# действительная полуось
+a = 3
+# мнимая полуось
+b = 2
+
+# левая ветвь
+for i in range(-1000, -a * 100 + 1):
+    x_ = i / 100
+    x_1.append(x_)
+    y_11.append(math.sqrt((x_ ** 2 / a ** 2 - 1) * b ** 2))
+    y_12.append(-math.sqrt((x_ ** 2 / a ** 2 - 1) * b ** 2))
+
+#правая ветвь
+for i in range(a * 100, 1000):
+    x_ = i / 100
+    x_2.append(x_)
+    y_21.append(math.sqrt((x_ ** 2 / a ** 2 - 1) * b ** 2))
+    y_22.append(-math.sqrt((x_ ** 2 / a ** 2 - 1) * b ** 2))
+
+plt.plot(x_1, y_11, color = 'c')
+plt.plot(x_1, y_12, color = 'c')
+plt.plot(x_2, y_21, color = 'c')
+plt.plot(x_2, y_22, color = 'c')
+
+plt.xlabel('x')
+plt.ylabel('y')
+plt.axis('equal')
