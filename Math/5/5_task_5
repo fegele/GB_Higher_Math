@@ -1,0 +1,34 @@
+# 5 Дополните код расчетом коэффициента корреляции x и y по формуле
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+n = 100
+r = 0.7
+x = np.random.rand(n)
+y = r*x + (1 - r)*np.random.rand(n)
+plt.plot(x, y, 'o')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.grid(True)
+
+a = (np.sum(x)*np.sum(y) - n*np.sum(x*y))/(np.sum(x)*np.sum(x) - n*np.sum(x*x))
+b = (np.sum(y) - a*np.sum(x))/n
+
+A = np.vstack([x, np.ones(len(x))]).T
+plt.plot([0,1], [b, a + b])
+plt.show()
+c = np.corrcoef(x, y)
+print(c)
+
+x_mean = np.mean(x)
+y_mean = np.mean(y)
+sum1 = 0
+sum2 = 0
+sum3 = 0
+for i in range(len(x)):
+    sum1 += (x[i] - x_mean) * (y[i] - y_mean)
+    sum2 += (x[i] - x_mean) ** 2
+    sum3 += (y[i] - y_mean) ** 2
+R = sum1 / np.sqrt(sum2 * sum3)
+print('Расчитанный коэффициент корелляции: ', R)
