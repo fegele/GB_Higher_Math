@@ -1,0 +1,16 @@
+# 2.2 Гистограмма распределения случайной суммы  +х0+ …+ х 9
+
+%matplotlib inline
+import numpy as np
+import matplotlib.pyplot as plt
+
+x_sum = []
+for i in range(1000):
+    x = sum(np.random.rand(10))
+    x_sum.append(x)
+num_bins = 10
+n, bins, patches = plt.hist(x_sum, num_bins)
+
+plt.xlabel('Summ')
+plt.ylabel('Probability')
+plt.show()

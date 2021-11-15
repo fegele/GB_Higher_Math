@@ -1,0 +1,12 @@
+# 4.1
+
+import itertools
+
+for p in itertools.permutations('0123456789', 2):
+    print(''.join(str(x) for x in p), end=' ')
+
+for p in itertools.combinations('0123456789', 2):
+    print(''.join(p), end=' ')
+
+for p in itertools.product('0123456789', repeat=2):
+    print(''.join(p), end=' ')
